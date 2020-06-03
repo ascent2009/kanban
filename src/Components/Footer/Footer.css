@@ -1,0 +1,25 @@
+.footerStyle {
+    height: 55px;
+    /* margin-top: 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0067A3;
+    color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.footerTasksStatus {
+    display: flex;
+    width: 335px;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.copyright {
+    margin-right: 20px;
+}

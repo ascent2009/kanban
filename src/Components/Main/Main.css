@@ -1,0 +1,8 @@
+.tasksBoard {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+}
