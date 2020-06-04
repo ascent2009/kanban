@@ -1,0 +1,41 @@
+.backlogBtn {
+    border: none;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin: 12px;
+
+}
+
+button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    color: #5E6C84;
+    background-color: rgb(208, 210, 216);
+    padding: 0;
+}
+
+button:hover,
+button:active,
+button:focus {
+    color: #000000;
+    outline: none;
+    transition: 0.5s;
+}
+
+.plus {
+    width: 15px;
+    height: 15px;
+    font-size: auto;
+    margin: 0 4px 0 0;
+    /* line-height: 21px; */
+}
+
+.text {
+    font-size: 15px;
+    line-height: 21px;
+    margin: 0;
+}

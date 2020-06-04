@@ -7,28 +7,30 @@ class Main extends React.Component {
   //     super(props);
   //   }
 
-  state = {
-    taskArr: [],
-  };
+  // state = {
+  //   taskArr: [],
+  // };
 
-  handleTaskItem = (value, id) => {
-    this.setState(({ taskArr }) => {
-      taskArr.unshift({
-        value,
-        id: taskArr.length + 1,
-      });
-      console.log("tasks:", taskArr);
-      return {
-        taskArr,
-      };
-    });
-  };
+  // handleTaskItem = (value, id) => {
+  //   this.setState(({ taskArr }) => {
+  //     taskArr.unshift({
+  //       value,
+  //       id: taskArr.length + 1,
+  //     });
+  //     console.log("tasks:", taskArr);
+  //     return {
+  //       taskArr,
+  //     };
+  //   });
+  // };
 
   render() {
-    const { taskArr } = this.state;
+    // const { taskArr } = this.state;
     return (
       <div className="tasksBoard">
-        <Backlog item={taskArr} onAddItem={this.handleTaskItem} />
+        <Backlog
+        // item={taskArr} onAddItem={this.handleTaskItem}
+        />
       </div>
     );
   }

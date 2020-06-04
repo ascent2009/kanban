@@ -1,61 +1,39 @@
 import React from "react";
 import "./Backlog.css";
+import Button from "../../Button/button";
+import Input from "../../Input/input";
 
 class Backlog extends React.Component {
-  //   constructor(props) {
-  //     super(props);
-  //   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+      tasks: [],
+    };
+  }
 
-  state = {
-    value: "",
-  };
-
-  handleInputChange = (e) => {
+  createTask = () => {
+    this.state.tasks.unshift(<Input />);
     this.setState({
-      value: e.target.value,
-    });
-  };
-
-  handleAddClick = () => {
-    this.props.onAdd();
-  };
-
-  handleSubmitForm = (e) => {
-    e.preventDefault();
-    this.setState(({ value }) => {
-      this.props.onAddItem(value);
-      //   return {
-      //     value: "",
-      //   };
+      tasks: this.state.tasks,
     });
   };
 
   render() {
-    const { onAddItem } = this.props;
+    const taskList = this.state.tasks.map((item, index) => {
+      return <li key={index}>{item}</li>;
+    });
     return (
-      <div className="backlogStyle">
-        <h2 className="backlogTitle">Backlog</h2>
-        <input
-          className="input"
-          type="text"
-          value={this.state.value}
-          onChange={this.handleInputChange}
-        />
-        <div className="backlogBtn">
-          <button className="addBtn">
-            <span className="plus">+</span>
-            <p className="text">Add card</p>
-          </button>
-          {/* <div
-            onAdd={(id) => {
-              onAddItem(id);
-            }}
-          ></div> */}
-          <button className="submitBtn" onClick={this.handleSubmitForm}>
-            <p className="text">Submit</p>
-          </button>
+      <>
+        <div className="backlogStyle">
+          <h2 className="backlogTitle">Backlog</h2>
+          <div>
+            {/* {this.state.tasks} */}
+            <ul className="listItem">{taskList}</ul>
+          </div>
+          <Button className="backlogBtn" onClick={this.createTask.bind(this)} />
         </div>
-      </div>
+      </>
     );
   }
 }
