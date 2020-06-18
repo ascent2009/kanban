@@ -1,0 +1,101 @@
+import React from "react";
+import "./Ready.css";
+import Button from "../../Button/button";
+// import Select from "../../Select/select";
+
+class Ready extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //   value: "",
+    //   tasks: [],
+    // };
+
+    // this.data = this.props.tasks;
+
+    this.state = {
+      button: <Button onClick={this.createSelect.bind(this)} />,
+      selectBox: null,
+      backlogTasks: [],
+      tasks: [],
+      dropDownInit: this.props.listInit,
+      // readyTasks: [],
+    };
+  }
+
+  // createTask = () => {
+  //   this.state.tasks.unshift(<Select />);
+  //   this.setState({
+  //     tasks: this.state.tasks,
+  //   });
+  // };
+
+  createSelect() {
+    if (this.props.listInit === false) {
+      return;
+    }
+
+    const selectBox = (
+      <div className="tasks" onClick={this.addTask.bind(this)}></div>
+    );
+
+    this.setState({
+      selectBox: selectBox,
+    });
+  }
+
+  addTask() {
+    this.setState({
+      backlogTasks: [...this.state.backlogTasks, this.props.tasks],
+    });
+  }
+
+  render() {
+    const dropDown = this.state.backlogTasks.map((item, index) => {
+      return (
+        <div className="tasks" key={index}>
+          {item}
+        </div>
+      );
+      // const taskList = this.state.tasks.map((item, index) => {
+      //   return <li key={index}>{item}</li>;
+    });
+
+    // const ready = this.state.readyTasks.map((item, index) => {
+    //   return (
+    //     <div className="tasks" key={index}>
+    //       {item}
+    //     </div>
+    //   );
+    // });
+
+    return (
+      // <>
+      //   <div className="style">
+      //     <h2 className="title">Ready</h2>
+      //     <div>
+      //       {/* {this.state.tasks} */}
+      //       <ul className="listItem">{taskList}</ul>
+      //     </div>
+      //     <Button className="backlogBtn" onClick={this.createTask.bind(this)} />
+      //   </div>
+      // </>
+
+      <>
+        <div className="style">
+          <h2 className="readyTitle">Ready</h2>
+          {this.state.selectBox}
+          {/* {this.backlogTasks} */}
+          {this.props.readyTasks}
+          {/* {ready} */}
+          <div>
+            <ul className="listItem">{dropDown}</ul>
+          </div>
+          {this.state.button}
+        </div>
+      </>
+    );
+  }
+}
+
+export default Ready;

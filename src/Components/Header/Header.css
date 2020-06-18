@@ -26,6 +26,7 @@ h1 {
     /* position: relative;
 z-index: 2; */
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .dropDownContayner {
@@ -37,12 +38,13 @@ z-index: 2; */
     color: black;
     background: #FFFFFF;
     border-radius: 5px;
-    /* position: relative; */
+    position: relative;
     transition: 0.5s;
     opacity: 100;
-    /* z-index: 1; */
+    z-index: 1;
     /* list-style-type: none; */
     transition: 0.5s;
+    cursor: auto;
 }
 
 .dropDownMenu {
@@ -55,6 +57,7 @@ z-index: 2; */
     /* margin-left: 7px; */
     margin-top: -16px;
     transition: 0.5s;
+    /* z-index: 7; */
 }
 
 .dropDownArrow {

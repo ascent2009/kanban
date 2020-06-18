@@ -1,7 +1,7 @@
 import React from "react";
 import "./button.css";
 
-const Button = ({ onClick }) => {
+const Button = ({ onClick, onUpdate }) => {
   return (
     // <button className="button" onClick={onClick}>
     //   + Add task
@@ -11,7 +11,7 @@ const Button = ({ onClick }) => {
         <span className="plus">+</span>
         <p className="text">Add card</p>
       </button>
-      <button className="submitBtn">
+      <button className="submitBtn" onClick={onUpdate}>
         <p className="text">Submit</p>
       </button>
     </div>

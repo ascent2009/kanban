@@ -1,15 +1,19 @@
 import React from "react";
 import Backlog from "./Backlog/Backlog";
+import Ready from "./Ready/Ready";
+import InProgress from "./InProgress/Inprogress";
+import Finished from "./Finished/Finished";
 import "./Main.css";
 
 class Main extends React.Component {
-  //   constructor(props) {
-  //     super(props);
-  //   }
-
-  // state = {
-  //   taskArr: [],
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      // taskList: <Backlog taskList />,
+      taskList: 0,
+      // name: "Бумеранг не запущен",
+    };
+  }
 
   // handleTaskItem = (value, id) => {
   //   this.setState(({ taskArr }) => {
@@ -24,13 +28,31 @@ class Main extends React.Component {
   //   });
   // };
 
+  // updateData = (value) => {
+  //   this.setState({ taskList: value });
+  // };
+
+  activeCounter = (value) => {
+    this.setState({
+      taskList: value,
+    });
+  };
+
   render() {
     // const { taskArr } = this.state;
+    // const taskList = () => {
+    //   console.log("taskList: ", this.taskList);
+    // };
     return (
       <div className="tasksBoard">
-        <Backlog
-        // item={taskArr} onAddItem={this.handleTaskItem}
-        />
+        <div>
+          {/* <p>State: {this.state.taskList}</p> */}
+          <Backlog updateData={this.activeCounter} />
+        </div>
+
+        <Ready />
+        <InProgress />
+        <Finished />
       </div>
     );
   }

@@ -1,6 +1,9 @@
 .footerStyle {
-    height: 55px;
-    /* margin-top: 20px; */
+    width: 100vw;
+    /* height: 55px; */
+    position: fixed;
+    bottom: 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

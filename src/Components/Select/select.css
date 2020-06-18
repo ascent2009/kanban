@@ -1,0 +1,10 @@
+.select {
+    margin: 12px auto;
+    border: none;
+    border-radius: 3%;
+    width: 225px;
+    min-height: 25px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}

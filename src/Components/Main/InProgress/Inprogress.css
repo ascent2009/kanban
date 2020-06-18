@@ -1,16 +1,16 @@
-.backlogStyle {
+.style {
     min-width: 250px;
-background-color: rgb(208, 210, 216);
-border-radius: 10px;
-height: fit-content;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-/* margin: auto; */
-margin-bottom: 20px;
+    background-color: rgb(208, 210, 216);
+    border-radius: 10px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* margin: auto; */
+    margin-bottom: 20px;
 }
 
-.backlogTitle {
+.progressTitle {
     font-size: 18px;
     line-height: 21px;
     margin: 12px;
@@ -35,8 +35,4 @@ margin-bottom: 20px;
     display: flex;
     justify-content: start;
     align-items: center;
-}
-
-.taskEmpty {
-    border: red 2px solid
 }
