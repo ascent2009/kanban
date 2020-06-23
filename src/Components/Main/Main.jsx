@@ -9,8 +9,8 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // taskList: <Backlog taskList />,
-      taskList: 0,
+      taskList: <Backlog tasks={this.taskList} />,
+      // taskList: 0,
       // name: "Бумеранг не запущен",
     };
   }
@@ -50,9 +50,20 @@ class Main extends React.Component {
           <Backlog updateData={this.activeCounter} />
         </div>
 
-        <Ready />
-        <InProgress />
-        <Finished />
+        <Ready
+        // tasks={this.state.taskList}
+        // buttonInit={this.state.buttonInit}
+        // listInit={this.state.inputValue}
+        // readyTasks={this.state.readyTasks}
+        />
+        <InProgress
+        // listInit={this.state.listInit}
+        // readyTasks={this.props.ready}
+        />
+        <Finished
+        // listInit={this.state.listInit}
+        // readyTasks={this.props.ready}
+        />
       </div>
     );
   }

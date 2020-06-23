@@ -7,7 +7,13 @@ class Footer extends React.Component {
     super(props);
     this.state = {
       activeTasks: 0,
+      finishedTasks: 0,
+      taskList: <Backlog />,
     };
+  }
+
+  test() {
+    console.log(this.props.taskList);
   }
 
   activeTasksNumber = () => {
@@ -25,11 +31,14 @@ class Footer extends React.Component {
         <div className="footerTasksStatus">
           {/* <p>Active tasks: {this.activeTasksNumber}</p> */}
           <p>Active tasks: {this.state.activeTasks}</p>
-          <p>Finished tasks: 'M'</p>
+          <p onClick={this.test.bind(this)}>
+            Finished tasks: {this.state.finishedTasks}
+          </p>
         </div>
         <div className="copyright">
           Kanban board by {authorName}, {YEAR}
         </div>
+        {/* <button onClick={this.test.bind(this)}>test</button> */}
       </div>
     );
   }

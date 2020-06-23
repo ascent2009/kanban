@@ -1,6 +1,7 @@
 import React from "react";
 import "./Ready.css";
-import Inprogress from "../../InProgress/Inprogress";
+// import Inprogress from "../../InProgress/Inprogress";
+import Inprogress from "./InProgress/Inprogress";
 import Button from "../../../Button/button";
 
 // import Select from "../../Select/select";
@@ -19,11 +20,12 @@ class Ready extends React.Component {
       button: <Button onClick={this.createSelect.bind(this)} />,
       selectBox: null,
       // buttonInit: false,
-      listInit: false,
+      // listInit: false,
       backlogTasks: [],
       // tasks: [],
-      // dropDownInit: this.props.listInit,
+
       readyTasks: [],
+      taskArr: [],
     };
   }
 
@@ -45,6 +47,8 @@ class Ready extends React.Component {
 
     this.setState({
       selectBox: selectBox,
+      thereAreTasks: true,
+      button: <Button onClick={this.createSelect.bind(this)} />,
     });
   }
 
@@ -55,21 +59,38 @@ class Ready extends React.Component {
 
     this.setState({
       dropDownInit: true,
-      backlogTasks: [...this.state.backlogTasks, this.props.tasks],
+      backlogTasks: React.Children.toArray([
+        ...this.state.backlogTasks,
+        this.props.tasks,
+      ]),
     });
   }
 
   selectTask(event) {
     const task = event.target.textContent;
+    const index = event.target.getAttribute("index");
 
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
-      backloпTasks: [],
+      backlogTasks: [],
       selectBox: null,
       dropDownInit: false,
-      listInit: true,
+      // listInit: true,
     });
+
+    this.props.deleteTask(index);
+    console.log("ready", this.state.readyTasks);
   }
+
+  deleteTask = (value) => {
+    const newArr = this.state.readyTasks.splice(value, 1);
+
+    this.setState({
+      taskArr: [...this.state.readyTasks, newArr],
+    });
+
+    console.log("delete", this.state.readyTasks);
+  };
 
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
@@ -84,9 +105,9 @@ class Ready extends React.Component {
 
     const ready = this.state.readyTasks.map((item, index) => {
       return (
-        <div className="tasks" key={index}>
+        <li className="tasks" key={index} index={index}>
           {item}
-        </div>
+        </li>
       );
     });
 
@@ -117,7 +138,9 @@ class Ready extends React.Component {
         <div>
           <Inprogress
             listInit={this.state.listInit}
-            ready={this.state.readyTasks}
+            // readyTasks={this.state.readyTasks}
+            readyTasks={ready}
+            deleteTask={this.deleteTask}
           />
         </div>
       </>

@@ -1,10 +1,10 @@
 .tasksBoard {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 40px auto;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
 }

@@ -40,3 +40,11 @@ button:focus {
     line-height: 21px;
     margin: 0;
 }
+
+/* .submitBtn {
+    color: transparent;
+}
+
+.submitBtn:active {
+    color: red;
+} */

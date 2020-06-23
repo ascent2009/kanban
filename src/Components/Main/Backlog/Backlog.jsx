@@ -20,7 +20,7 @@ class Backlog extends React.Component {
       inputValue: null,
       tasks: [],
       // taskList: [],
-      // listInit: false,
+      listInit: false,
       buttonInit: false,
       // name: "Бумеранг вернулся назад",
       readyTasks: [],
@@ -41,7 +41,6 @@ class Backlog extends React.Component {
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
     });
-    console.log(this.state.readyTasks);
   }
 
   createInput() {
@@ -80,6 +79,10 @@ class Backlog extends React.Component {
       listInit: true,
     });
   }
+
+  deleteTask = (value) => {
+    this.state.tasks.splice(value, 1);
+  };
 
   render() {
     const taskList = this.state.tasks.map((item, index) => {
@@ -122,6 +125,7 @@ class Backlog extends React.Component {
             // listInit={this.state.listInit}
             listInit={this.state.inputValue}
             readyTasks={this.state.readyTasks}
+            deleteTask={this.deleteTask}
           />
         </div>
       </>

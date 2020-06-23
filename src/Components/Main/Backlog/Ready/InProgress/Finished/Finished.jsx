@@ -1,6 +1,7 @@
 import React from "react";
 import "./Finished.css";
-import Button from "../../Button/button";
+import Button from "../../../../../Button/button";
+
 // import Select from "../../Select/select";
 
 class Finished extends React.Component {
@@ -22,6 +23,7 @@ class Finished extends React.Component {
       // tasks: [],
       // dropDownInit: this.props.listInit,
       readyTasks: [],
+      // taskArr: [],
     };
   }
 
@@ -59,15 +61,25 @@ class Finished extends React.Component {
 
   selectTask(event) {
     const task = event.target.textContent;
+    const index = event.target.getAttribute("index");
 
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
-      backloпTasks: [],
+      backlogTasks: [],
       selectBox: null,
       dropDownInit: false,
       listInit: true,
     });
+    this.props.deleteTask(index);
   }
+
+  deleteTask = (value) => {
+    const newArr = this.state.readyTasks.splice(value, 1);
+
+    this.setState({
+      taskArr: [...this.state.readyTasks, newArr],
+    });
+  };
 
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {

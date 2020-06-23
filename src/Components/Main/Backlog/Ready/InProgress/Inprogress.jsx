@@ -1,9 +1,11 @@
 import React from "react";
-import "./Finished.css";
-import Button from "../../Button/button";
+import "./Inprogress.css";
+import Finished from "./Finished/Finished";
+import Button from "../../../../Button/button";
+
 // import Select from "../../Select/select";
 
-class Finished extends React.Component {
+class Inprogress extends React.Component {
   constructor(props) {
     super(props);
     // this.state = {
@@ -22,6 +24,7 @@ class Finished extends React.Component {
       // tasks: [],
       // dropDownInit: this.props.listInit,
       readyTasks: [],
+      taskArr: [],
     };
   }
 
@@ -53,21 +56,34 @@ class Finished extends React.Component {
 
     this.setState({
       dropDownInit: true,
-      backlogTasks: [...this.state.backlogTasks, this.props.readyTasks],
+      backlogTasks: React.Children.toArray([
+        ...this.state.backlogTasks,
+        this.props.readyTasks,
+      ]),
     });
   }
 
   selectTask(event) {
     const task = event.target.textContent;
+    const index = event.target.getAttribute("index");
 
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
-      backloпTasks: [],
+      backlogTasks: [],
       selectBox: null,
       dropDownInit: false,
       listInit: true,
     });
+    this.props.deleteTask(index);
   }
+
+  deleteTask = (value) => {
+    const newArr = this.state.readyTasks.splice(value, 1);
+
+    this.setState({
+      taskArr: [...this.state.readyTasks, newArr],
+    });
+  };
 
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
@@ -102,7 +118,7 @@ class Finished extends React.Component {
 
       <>
         <div className="style">
-          <h2 className="readyTitle">Finished</h2>
+          <h2 className="readyTitle">In Progress</h2>
           {this.state.selectBox}
           {/* {this.backlogTasks} */}
           {ready}
@@ -112,12 +128,16 @@ class Finished extends React.Component {
           </div>
           {this.state.button}
         </div>
-        {/* <div>
-          <Finished listInit={this.state.listInit} readyTasks={ready} />
-        </div> */}
+        <div>
+          <Finished
+            listInit={this.state.listInit}
+            readyTasks={ready}
+            deleteTask={this.deleteTask}
+          />
+        </div>
       </>
     );
   }
 }
 
-export default Finished;
+export default Inprogress;

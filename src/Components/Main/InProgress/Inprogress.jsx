@@ -55,7 +55,7 @@ class Inprogress extends React.Component {
 
     this.setState({
       dropDownInit: true,
-      backlogTasks: [...this.state.backlogTasks, this.props.tasks],
+      backlogTasks: [...this.state.backlogTasks, this.props.readyTasks],
     });
   }
 
@@ -114,12 +114,12 @@ class Inprogress extends React.Component {
           </div>
           {this.state.button}
         </div>
-        <div>
+        {/* <div>
           <Finished
             listInit={this.state.listInit}
             ready={this.state.readyTasks}
           />
-        </div>
+        </div> */}
       </>
     );
   }
