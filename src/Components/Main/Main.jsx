@@ -3,6 +3,8 @@ import Backlog from "./Backlog/Backlog";
 import Ready from "./Ready/Ready";
 import InProgress from "./InProgress/Inprogress";
 import Finished from "./Finished/Finished";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Page from "./Router/Page";
 import "./Main.css";
 
 class Main extends React.Component {

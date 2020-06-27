@@ -38,6 +38,11 @@
   margin-bottom: 24px;
 }
 
+.routerLink {
+  text-decoration: none;
+  color: black;
+}
+
 .listItem {
   margin: 0;
   padding: 0;

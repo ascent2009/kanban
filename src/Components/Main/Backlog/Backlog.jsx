@@ -1,9 +1,11 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Backlog.css";
 import Button from "../../Button/button";
 // import Input from "../../Input/input";
 // import Ready from "../Ready/Ready";
 import Ready from "./Ready/Ready";
+import Page from "../Router/Page";
 
 class Backlog extends React.Component {
   constructor(props) {
@@ -103,31 +105,38 @@ class Backlog extends React.Component {
 
     return (
       <>
-        <div className="backlogStyle">
-          <h2 className="backlogTitle">Backlog</h2>
-          {/* <Button
+        <Router>
+          <Route path="/backlog" component={Page} />
+          <div className="backlogStyle">
+            <h2 className="backlogTitle">
+              <Link to="/backlog" className="routerLink">
+                Backlog
+              </Link>
+            </h2>
+            {/* <Button
             className="submitBtn"
             onUpdate={() => this.props.updateData(taskList.length)}
           /> */}
 
-          <div>
-            {/* {this.state.tasks} */}
-            <ul className="listItem">{taskList}</ul>
+            <div>
+              {/* {this.state.tasks} */}
+              <ul className="listItem">{taskList}</ul>
+            </div>
+            {/* <Button className="backlogBtn" onClick={this.createTask.bind(this)} /> */}
+            {this.state.input}
+            {this.state.button}
           </div>
-          {/* <Button className="backlogBtn" onClick={this.createTask.bind(this)} /> */}
-          {this.state.input}
-          {this.state.button}
-        </div>
-        <div>
-          <Ready
-            tasks={taskList}
-            buttonInit={this.state.buttonInit}
-            // listInit={this.state.listInit}
-            listInit={this.state.inputValue}
-            readyTasks={this.state.readyTasks}
-            deleteTask={this.deleteTask}
-          />
-        </div>
+          <div>
+            <Ready
+              tasks={taskList}
+              buttonInit={this.state.buttonInit}
+              // listInit={this.state.listInit}
+              listInit={this.state.inputValue}
+              readyTasks={this.state.readyTasks}
+              deleteTask={this.deleteTask}
+            />
+          </div>
+        </Router>
       </>
     );
   }

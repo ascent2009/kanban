@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Ready.css";
 // import Inprogress from "../../InProgress/Inprogress";
 import Inprogress from "./InProgress/Inprogress";
