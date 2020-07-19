@@ -3,40 +3,86 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Page.css";
 import close from "../../Img/close.svg";
 import add from "../../Img/add.svg";
-import Main from "../Main";
+
+const dataBase = JSON.parse(localStorage.getItem("kanban")) || ["0"];
 
 class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskList: 0,
-      title: "Backlog",
+      taskList: this.props.readyTasks,
+
       // taskList: 0,
       // name: "Бумеранг не запущен",
-      showInfo: false,
+      description: null,
     };
   }
 
   showDescription = () => {
-    const desription = (
-      <div className="description">
-        <textarea
-          className="text"
-          type="text"
-          placeholder="description..."
-        ></textarea>
-        <button className="btn" onClick={this.hideDescription.bind(this)}>
-          <img src={add} alt="add" title="добавить описание задачи" />
-        </button>
-      </div>
-    );
+    const taskDate = new Date().toLocaleString();
 
-    this.setState({ taskList: desription });
+    // const edit = document.querySelector(".description");
+    // edit.classList.remove("hide");
+    // const description = (
+    //   <div className="description">
+    //     <textarea
+    //       className="text"
+    //       type="text"
+    //       placeholder="description..."
+    //     ></textarea>
+    //     <button
+    //       className="btn"
+    //       onClick={this.saveDescription.bind(this)}
+    //       // onDoubleClick={this.hideDescription.bind(this)}
+    //     >
+    //       <img src={add} alt="add" title="добавить описание задачи" />
+    //     </button>
+    //   </div>
+    // );
+    this.setState({
+      description: (
+        <div className="description">
+          {taskDate}
+          <textarea
+            className="text"
+            type="text"
+            placeholder="description..."
+          ></textarea>
+          <button
+            className="btn"
+            onClick={this.saveDescription.bind(this)}
+            // onDoubleClick={this.hideDescription.bind(this)}
+          >
+            <img src={add} alt="add" title="добавить описание задачи" />
+          </button>
+        </div>
+      ),
+    });
+  };
+
+  saveDB = () => localStorage.setItem("kanban", JSON.stringify(dataBase));
+
+  saveDescription = () => {
+    console.log("save");
+    const save = document.querySelector(".text");
+    save.setAttribute("disabled", "disabled");
+    // save.classList.add("hide");
+    // this.setState({ taskList: this.taskList });
+
+    // dataBase.push(this.taskDate);
+    const itemObj = this.state.description;
+    console.log("this.state.description: ", itemObj);
+    const newArr = dataBase.push(itemObj.textarea);
+    this.saveDB(newArr);
+
+    setTimeout(this.hideDescription.bind(this), 3000);
   };
 
   hideDescription = () => {
-    this.setState({ taskList: this.props.taskList });
-    console.log("task");
+    this.setState({ description: null });
+    // const save = document.querySelector(".description");
+    // save.setAttribute("disabled", "disabled");
+    // save.classList.add("hide");
   };
 
   closePage = () => {
@@ -46,22 +92,46 @@ class Page extends React.Component {
   render() {
     return (
       <>
+        {/* <Router> */}
         <div className="mainStyle">
           <div className="titleStyle">
-            <h2>{this.state.title}</h2>
-            <button className="closeButton" onClick={this.closePage.bind(this)}>
+            <h2>{this.props.title}</h2>
+
+            <button
+              className="closeButton"
+              onClick={this.closePage.bind(this)}
+              title="Закрыть окно"
+            >
+              {/* <Link to="/"> */}
               <img src={close} alt="close" />
+              {/* </Link> */}
             </button>
           </div>
-          <div className="taskList" onClick={this.showDescription.bind(this)}>
-            {this.state.taskList}
-          </div>
+
+          <ul className="taskList">
+            {this.props.readyTasks.map((item, index) => {
+              return (
+                <li
+                  className="listItem"
+                  onClick={this.showDescription.bind(this)}
+                  key={index}
+                >
+                  {/* {this.state.taskList}
+                    {this.state.description} */}
+                  {item}
+                  {this.state.description}
+                </li>
+              );
+            })}
+          </ul>
+
           {/* <textarea
             className="description"
             type="text"
             placeholder="description..."
           /> */}
         </div>
+        {/* </Router> */}
       </>
     );
   }

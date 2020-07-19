@@ -6,9 +6,9 @@ class Footer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTasks: 0,
-      finishedTasks: 0,
-      taskList: <Backlog />,
+      // activeTasks: 0,
+      // finishedTasks: 0,
+      // taskList: <Backlog />,
     };
   }
 
@@ -16,11 +16,11 @@ class Footer extends React.Component {
     console.log(this.props.taskList);
   }
 
-  activeTasksNumber = () => {
-    this.setState({
-      activeTasks: this.state.taskList,
-    });
-  };
+  // activeTasksNumber = () => {
+  //   this.setState({
+  //     activeTasks: this.state.readyTasks.length,
+  //   });
+  // };
 
   render() {
     const authorName = "Dmitry D.";
@@ -30,10 +30,8 @@ class Footer extends React.Component {
       <div className="footerStyle">
         <div className="footerTasksStatus">
           {/* <p>Active tasks: {this.activeTasksNumber}</p> */}
-          <p>Active tasks: {this.state.activeTasks}</p>
-          <p onClick={this.test.bind(this)}>
-            Finished tasks: {this.state.finishedTasks}
-          </p>
+          <p>Active tasks: {this.props.activeTasks.length - 1}</p>
+          <p>Finished tasks: {this.props.finishedTasks.length - 1}</p>
         </div>
         <div className="copyright">
           Kanban board by {authorName}, {YEAR}

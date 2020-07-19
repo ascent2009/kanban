@@ -27,6 +27,7 @@ class Backlog extends React.Component {
       // name: "Бумеранг вернулся назад",
       readyTasks: [],
       // taskColumn: [],
+      title: "Backlog",
     };
   }
 
@@ -48,6 +49,8 @@ class Backlog extends React.Component {
   createInput() {
     const input = (
       <input
+        // autoComplete="off"
+        // autoFocus={true}
         className="tasks"
         onChange={this.addValue.bind(this)}
         onClick={this.addTask.bind(this)}
@@ -102,15 +105,18 @@ class Backlog extends React.Component {
     // const readyTasks = this.state.readyTasks.map((item, index) => {
     //   return <div key={index}>{item}</div>;
     // });
+    const routePage = () => (
+      <Page title={this.state.title} readyTasks={this.state.tasks} />
+    );
 
     return (
       <>
         <Router>
-          <Route path="/backlog" component={Page} />
+          <Route path="/backlog" component={routePage} />
           <div className="backlogStyle">
             <h2 className="backlogTitle">
               <Link to="/backlog" className="routerLink">
-                Backlog
+                {this.state.title}
               </Link>
             </h2>
             {/* <Button

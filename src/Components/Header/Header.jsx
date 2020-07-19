@@ -1,7 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import userMenuUp from "../Img/userMenuUp.jpg";
 import userMenuDown from "../Img/userMenuDown.jpg";
 import "./Header.css";
+
 // import styled, { keyframes } from 'styled-components';
 // import { fadeInDown } from 'react-animations';
 
@@ -23,15 +25,19 @@ class Header extends React.Component {
       <div className="dropDownContayner">
         <div className="dropDownArrow"></div>
         <ul className="dropDownMenu">
-          <li>
-            <p className="menuItem">My account</p>
-          </li>
-          <li>
-            <p className="menuItem">My tasks</p>
-          </li>
-          <li>
-            <p className="menuItem">Log out</p>
-          </li>
+          <Router>
+            <li>
+              <p className="menuItem">My account</p>
+            </li>
+            <li>
+              <p className="menuItem">
+                <Link to="/">My tasks</Link>
+              </p>
+            </li>
+            <li>
+              <p className="menuItem">Log out</p>
+            </li>
+          </Router>
         </ul>
       </div>
     );

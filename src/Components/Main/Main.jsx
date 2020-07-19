@@ -11,9 +11,8 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskList: <Backlog tasks={this.taskList} />,
-      // taskList: 0,
-      // name: "Бумеранг не запущен",
+      tasks: [],
+      readyTasks: [],
     };
   }
 
