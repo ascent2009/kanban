@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import Backlog from "../Main/Backlog/Backlog";
+// import Backlog from "./Main/Backlog/Backlog";
 
 class Footer extends React.Component {
   constructor(props) {
@@ -30,8 +30,8 @@ class Footer extends React.Component {
       <div className="footerStyle">
         <div className="footerTasksStatus">
           {/* <p>Active tasks: {this.activeTasksNumber}</p> */}
-          <p>Active tasks: {this.props.activeTasks.length - 1}</p>
-          <p>Finished tasks: {this.props.finishedTasks.length - 1}</p>
+          <p>Active tasks: {this.props.activeTasks.length}</p>
+          <p>Finished tasks: {this.props.finishedTasks.length}</p>
         </div>
         <div className="copyright">
           Kanban board by {authorName}, {YEAR}

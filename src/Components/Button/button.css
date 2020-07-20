@@ -1,4 +1,4 @@
-.backlogBtn {
+/* .backlogBtn {
     border: none;
 
     display: flex;
@@ -6,32 +6,37 @@
 
     margin: 12px;
 
-}
+} */
 
-button {
+.button {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border: none;
     color: #5E6C84;
     background-color: rgb(208, 210, 216);
     padding: 0;
+    border-radius: 10px;
+    width: 170px;
 }
 
-button:hover,
-button:active,
-button:focus {
-    color: #000000;
+.button:hover,
+.button:active,
+.button:focus {
+    color: #ffffff;
     outline: none;
     transition: 0.5s;
     cursor: pointer;
+    background-color: #0079BF;
+
 }
 
 .plus {
     width: 15px;
     height: 15px;
     font-size: auto;
-    margin: 0 4px 0 0;
+    margin: 0;
+    /* padding-left: 5px; */
     /* line-height: 21px; */
 }
 
@@ -39,12 +44,17 @@ button:focus {
     font-size: 15px;
     line-height: 21px;
     margin: 0;
+    padding: 5px 10px;
+
 }
 
-/* .submitBtn {
-    color: transparent;
-}
+.add:hover,
+.add:active,
+.add:focus {
+    color: #000000;
+    outline: none;
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: #ffffff;
 
-.submitBtn:active {
-    color: red;
-} */
+}

@@ -71,3 +71,10 @@
 .taskEmpty {
   border: red 2px solid;
 }
+
+.backlogBtn {
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin: 12px;
+}

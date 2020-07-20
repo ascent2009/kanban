@@ -1,10 +1,11 @@
 import React from "react";
 import Backlog from "./Backlog/Backlog";
-import Ready from "./Ready/Ready";
-import InProgress from "./InProgress/Inprogress";
-import Finished from "./Finished/Finished";
+import Footer from "./Footer/Footer";
+// import Ready from "./Ready/Ready";
+// import InProgress from "./InProgress/Inprogress";
+// import Finished from "./Finished/Finished";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Page from "./Router/Page";
+// import Page from "./Router/Page";
 import "./Main.css";
 
 class Main extends React.Component {
@@ -34,9 +35,8 @@ class Main extends React.Component {
   // };
 
   activeCounter = (value) => {
-    this.setState({
-      taskList: value,
-    });
+    this.setState({ tasks: value });
+    console.log("активные задачи Main: ", value);
   };
 
   render() {
@@ -45,27 +45,33 @@ class Main extends React.Component {
     //   console.log("taskList: ", this.taskList);
     // };
     return (
-      <div className="tasksBoard">
-        <div>
-          {/* <p>State: {this.state.taskList}</p> */}
-          <Backlog updateData={this.activeCounter} />
-        </div>
+      <>
+        <div className="tasksBoard">
+          <div>
+            {/* <p>State: {this.state.taskList}</p> */}
+            <Backlog active={this.activeCounter} />
+          </div>
 
-        <Ready
-        // tasks={this.state.taskList}
-        // buttonInit={this.state.buttonInit}
-        // listInit={this.state.inputValue}
-        // readyTasks={this.state.readyTasks}
+          {/* <Ready
+          // tasks={this.state.taskList}
+          // buttonInit={this.state.buttonInit}
+          // listInit={this.state.inputValue}
+          // readyTasks={this.state.readyTasks}
+          />
+          <InProgress
+          // listInit={this.state.listInit}
+          // readyTasks={this.props.ready}
+          />
+          <Finished
+          // listInit={this.state.listInit}
+          // readyTasks={this.props.ready}
+          /> */}
+        </div>
+        <Footer
+          activeTasks={this.state.tasks}
+          finishedTasks={this.state.tasks}
         />
-        <InProgress
-        // listInit={this.state.listInit}
-        // readyTasks={this.props.ready}
-        />
-        <Finished
-        // listInit={this.state.listInit}
-        // readyTasks={this.props.ready}
-        />
-      </div>
+      </>
     );
   }
 }

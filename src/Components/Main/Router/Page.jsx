@@ -96,6 +96,10 @@ class Page extends React.Component {
         <div className="mainStyle">
           <div className="titleStyle">
             <h2>{this.props.title}</h2>
+            <p>
+              {this.props.readyTasks.length}
+              {/* {this.props.active} */}
+            </p>
 
             <button
               className="closeButton"
