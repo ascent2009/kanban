@@ -36,3 +36,10 @@
     justify-content: start;
     align-items: center;
 }
+
+.backlogBtn {
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin: 12px;
+}

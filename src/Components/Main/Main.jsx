@@ -4,7 +4,7 @@ import Footer from "./Footer/Footer";
 // import Ready from "./Ready/Ready";
 // import InProgress from "./InProgress/Inprogress";
 // import Finished from "./Finished/Finished";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import Page from "./Router/Page";
 import "./Main.css";
 
@@ -12,7 +12,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
+      tasks: 0,
       readyTasks: [],
     };
   }
@@ -46,13 +46,13 @@ class Main extends React.Component {
     // };
     return (
       <>
-        <div className="tasksBoard">
-          <div>
-            {/* <p>State: {this.state.taskList}</p> */}
-            <Backlog active={this.activeCounter} />
-          </div>
+        {/* <div className="tasksBoard"> */}
+        <div>
+          {/* <p>State: {this.state.taskList}</p> */}
+          <Backlog active={this.activeCounter} />
+        </div>
 
-          {/* <Ready
+        {/* <Ready
           // tasks={this.state.taskList}
           // buttonInit={this.state.buttonInit}
           // listInit={this.state.inputValue}
@@ -66,7 +66,7 @@ class Main extends React.Component {
           // listInit={this.state.listInit}
           // readyTasks={this.props.ready}
           /> */}
-        </div>
+        {/* </div> */}
         <Footer
           activeTasks={this.state.tasks}
           finishedTasks={this.state.tasks}

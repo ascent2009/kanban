@@ -4,7 +4,7 @@ import "./Backlog.css";
 import Button from "../../Button/button";
 // import Input from "../../Input/input";
 // import Ready from "../Ready/Ready";
-import Ready from "./Ready/Ready";
+import Ready from "../Ready/Ready";
 import Page from "../Router/Page";
 
 class Backlog extends React.Component {
@@ -137,7 +137,7 @@ class Backlog extends React.Component {
     );
 
     return (
-      <>
+      <div className="tasksBoard">
         <Router>
           <Route path="/backlog" component={routePage} />
           <div className="backlogStyle">
@@ -175,18 +175,17 @@ class Backlog extends React.Component {
               </div>
             </div>
           </div>
-          <div>
-            <Ready
-              tasks={taskList}
-              buttonInit={this.state.buttonInit}
-              // listInit={this.state.listInit}
-              listInit={this.state.inputValue}
-              readyTasks={this.state.readyTasks}
-              deleteTask={this.deleteTask}
-            />
-          </div>
+
+          <Ready
+            tasks={taskList}
+            buttonInit={this.state.buttonInit}
+            // listInit={this.state.listInit}
+            listInit={this.state.inputValue}
+            readyTasks={this.state.readyTasks}
+            deleteTask={this.deleteTask}
+          />
         </Router>
-      </>
+      </div>
     );
   }
 }

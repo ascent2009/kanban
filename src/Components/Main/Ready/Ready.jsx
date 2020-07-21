@@ -1,6 +1,10 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Ready.css";
+// import Inprogress from "../../InProgress/Inprogress";
+import Inprogress from "../InProgress/Inprogress";
 import Button from "../../Button/button";
+
 // import Select from "../../Select/select";
 
 class Ready extends React.Component {
@@ -16,10 +20,13 @@ class Ready extends React.Component {
     this.state = {
       button: <Button onClick={this.createSelect.bind(this)} />,
       selectBox: null,
+      // buttonInit: false,
+      // listInit: false,
       backlogTasks: [],
-      tasks: [],
-      dropDownInit: this.props.listInit,
-      // readyTasks: [],
+      // tasks: [],
+
+      readyTasks: [],
+      taskArr: [],
     };
   }
 
@@ -41,19 +48,55 @@ class Ready extends React.Component {
 
     this.setState({
       selectBox: selectBox,
+      thereAreTasks: true,
+      button: <Button onClick={this.createSelect.bind(this)} />,
     });
   }
 
   addTask() {
+    if (this.state.dropDownInit === true) {
+      return;
+    }
+
     this.setState({
-      backlogTasks: [...this.state.backlogTasks, this.props.tasks],
+      dropDownInit: true,
+      backlogTasks: React.Children.toArray([
+        ...this.state.backlogTasks,
+        this.props.tasks,
+      ]),
     });
   }
+
+  selectTask(event) {
+    const task = event.target.textContent;
+    const index = event.target.getAttribute("index");
+
+    this.setState({
+      readyTasks: [...this.state.readyTasks, task],
+      backlogTasks: [],
+      selectBox: null,
+      dropDownInit: false,
+      // listInit: true,
+    });
+
+    this.props.deleteTask(index);
+    console.log("ready", this.state.readyTasks);
+  }
+
+  deleteTask = (value) => {
+    const newArr = this.state.readyTasks.splice(value, 1);
+
+    this.setState({
+      taskArr: [...this.state.readyTasks, newArr],
+    });
+
+    console.log("delete", this.state.readyTasks);
+  };
 
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
       return (
-        <div className="tasks" key={index}>
+        <div onClick={this.selectTask.bind(this)} className="tasks" key={index}>
           {item}
         </div>
       );
@@ -61,13 +104,13 @@ class Ready extends React.Component {
       //   return <li key={index}>{item}</li>;
     });
 
-    // const ready = this.state.readyTasks.map((item, index) => {
-    //   return (
-    //     <div className="tasks" key={index}>
-    //       {item}
-    //     </div>
-    //   );
-    // });
+    const ready = this.state.readyTasks.map((item, index) => {
+      return (
+        <li className="tasks" key={index} index={index}>
+          {item}
+        </li>
+      );
+    });
 
     return (
       // <>
@@ -86,13 +129,21 @@ class Ready extends React.Component {
           <h2 className="readyTitle">Ready</h2>
           {this.state.selectBox}
           {/* {this.backlogTasks} */}
-          {this.props.readyTasks}
-          {/* {ready} */}
+          {ready}
+          {/* {this.props.readyTasks} */}
           <div>
             <ul className="listItem">{dropDown}</ul>
           </div>
-          {this.state.button}
+
+          <div className="backlogBtn">{this.state.button}</div>
         </div>
+
+        <Inprogress
+          listInit={this.state.listInit}
+          // readyTasks={this.state.readyTasks}
+          readyTasks={ready}
+          deleteTask={this.deleteTask}
+        />
       </>
     );
   }

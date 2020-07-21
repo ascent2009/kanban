@@ -30,7 +30,7 @@ class Footer extends React.Component {
       <div className="footerStyle">
         <div className="footerTasksStatus">
           {/* <p>Active tasks: {this.activeTasksNumber}</p> */}
-          <p>Active tasks: {this.props.activeTasks.length}</p>
+          <p>Active tasks: {this.props.activeTasks}</p>
           <p>Finished tasks: {this.props.finishedTasks.length}</p>
         </div>
         <div className="copyright">

@@ -1,6 +1,8 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Finished.css";
 import Button from "../../Button/button";
+
 // import Select from "../../Select/select";
 
 class Finished extends React.Component {
@@ -14,7 +16,12 @@ class Finished extends React.Component {
     // this.data = this.props.tasks;
 
     this.state = {
-      button: <Button onClick={this.createSelect.bind(this)} />,
+      button: (
+        <Button
+          classNamе="button + add"
+          onClick={this.createSelect.bind(this)}
+        />
+      ),
       selectBox: null,
       // buttonInit: false,
       listInit: false,
@@ -22,6 +29,7 @@ class Finished extends React.Component {
       // tasks: [],
       // dropDownInit: this.props.listInit,
       readyTasks: [],
+      // taskArr: [],
     };
   }
 
@@ -59,15 +67,25 @@ class Finished extends React.Component {
 
   selectTask(event) {
     const task = event.target.textContent;
+    const index = event.target.getAttribute("index");
 
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
-      backloпTasks: [],
+      backlogTasks: [],
       selectBox: null,
       dropDownInit: false,
       listInit: true,
     });
+    this.props.deleteTask(index);
   }
+
+  deleteTask = (value) => {
+    const newArr = this.state.readyTasks.splice(value, 1);
+
+    this.setState({
+      taskArr: [...this.state.readyTasks, newArr],
+    });
+  };
 
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
@@ -110,7 +128,7 @@ class Finished extends React.Component {
           <div>
             <ul className="listItem">{dropDown}</ul>
           </div>
-          {this.state.button}
+          <div className="backlogBtn">{this.state.button}</div>
         </div>
         {/* <div>
           <Finished listInit={this.state.listInit} readyTasks={ready} />
