@@ -186,6 +186,7 @@ class Backlog extends React.Component {
             readyTasks={this.state.readyTasks}
             deleteTask={this.deleteTask}
             finished={this.props.finished}
+            minusActive={this.props.minusActive}
           />
         </Router>
       </div>

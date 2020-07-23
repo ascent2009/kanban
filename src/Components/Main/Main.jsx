@@ -36,12 +36,17 @@ class Main extends React.Component {
 
   activeCounter = (value) => {
     this.setState({ tasks: value });
-    // console.log("активные задачи Main: ", value);
+    console.log("активные задачи Main Active: ", value);
+  };
+
+  minusActiveCounter = (value) => {
+    this.setState({ tasks: value });
+    console.log("активные задачи уменьшение Main Active: ", value);
   };
 
   finishedCounter = (value) => {
     this.setState({ finishedTasks: value });
-    console.log("активные задачи Main: ", value);
+    console.log("активные задачи Main Finished: ", value);
   };
 
   render() {
@@ -56,6 +61,7 @@ class Main extends React.Component {
           {/* <p>State: {this.state.taskList}</p> */}
           <Backlog
             active={this.activeCounter}
+            minusActive={this.minusActiveCounter}
             finished={this.finishedCounter}
           />
         </div>

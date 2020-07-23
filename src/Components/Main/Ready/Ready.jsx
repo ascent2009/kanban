@@ -88,6 +88,7 @@ class Ready extends React.Component {
 
     this.props.deleteTask(index);
     console.log("ready", this.state.readyTasks);
+    this.props.minusActive(this.props.tasks.length - 1);
   }
 
   deleteTask = (value) => {
