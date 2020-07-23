@@ -98,6 +98,8 @@ class Backlog extends React.Component {
       listInit: true,
       submitBtn: null,
     });
+
+    this.props.active(this.state.tasks.length + 1);
   }
 
   deleteTask = (value) => {
@@ -143,9 +145,9 @@ class Backlog extends React.Component {
           <div className="backlogStyle">
             <h2
               className="backlogTitle"
-              onClick={() => {
-                this.props.active(this.state.tasks.length);
-              }}
+              // onClick={() => {
+              //   this.props.active(this.state.tasks.length);
+              // }}
             >
               <Link to="/backlog" className="routerLink">
                 {this.state.title}
@@ -166,13 +168,13 @@ class Backlog extends React.Component {
 
             <div className="backlogBtn">
               {this.state.button}
-              <div
+              {/* <div
                 onClick={() => {
                   this.props.active(this.state.tasks.length + 1);
                 }}
-              >
-                {this.state.submitBtn}
-              </div>
+              > */}
+              {this.state.submitBtn}
+              {/* </div> */}
             </div>
           </div>
 
@@ -183,6 +185,7 @@ class Backlog extends React.Component {
             listInit={this.state.inputValue}
             readyTasks={this.state.readyTasks}
             deleteTask={this.deleteTask}
+            finished={this.props.finished}
           />
         </Router>
       </div>

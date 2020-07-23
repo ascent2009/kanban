@@ -13,7 +13,7 @@ class Main extends React.Component {
     super(props);
     this.state = {
       tasks: 0,
-      readyTasks: [],
+      finishedTasks: 0,
     };
   }
 
@@ -36,6 +36,11 @@ class Main extends React.Component {
 
   activeCounter = (value) => {
     this.setState({ tasks: value });
+    // console.log("активные задачи Main: ", value);
+  };
+
+  finishedCounter = (value) => {
+    this.setState({ finishedTasks: value });
     console.log("активные задачи Main: ", value);
   };
 
@@ -49,7 +54,10 @@ class Main extends React.Component {
         {/* <div className="tasksBoard"> */}
         <div>
           {/* <p>State: {this.state.taskList}</p> */}
-          <Backlog active={this.activeCounter} />
+          <Backlog
+            active={this.activeCounter}
+            finished={this.finishedCounter}
+          />
         </div>
 
         {/* <Ready
@@ -69,7 +77,7 @@ class Main extends React.Component {
         {/* </div> */}
         <Footer
           activeTasks={this.state.tasks}
-          finishedTasks={this.state.tasks}
+          finishedTasks={this.state.finishedTasks}
         />
       </>
     );

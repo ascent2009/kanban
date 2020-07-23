@@ -134,6 +134,7 @@ class Inprogress extends React.Component {
           listInit={this.state.listInit}
           readyTasks={ready}
           deleteTask={this.deleteTask}
+          finished={this.props.finished}
         />
       </>
     );

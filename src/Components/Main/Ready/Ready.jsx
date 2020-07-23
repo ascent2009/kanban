@@ -24,7 +24,7 @@ class Ready extends React.Component {
       // listInit: false,
       backlogTasks: [],
       // tasks: [],
-
+      disabled: true,
       readyTasks: [],
       taskArr: [],
     };
@@ -38,8 +38,14 @@ class Ready extends React.Component {
   // };
 
   createSelect() {
-    if (this.props.listInit === false) {
+    if (
+      this.props.listInit === false
+      // || !this.state.readyTasks.length
+    ) {
       return;
+      // const disabled = document.querySelector(".button");
+      // disabled.setAttribute("disabled", "disabled");
+      // console.log("disabled: ", disabled);
     }
 
     const selectBox = (
@@ -47,6 +53,7 @@ class Ready extends React.Component {
     );
 
     this.setState({
+      // disableButton: "none",
       selectBox: selectBox,
       thereAreTasks: true,
       button: <Button onClick={this.createSelect.bind(this)} />,
@@ -131,6 +138,9 @@ class Ready extends React.Component {
           {/* {this.backlogTasks} */}
           {ready}
           {/* {this.props.readyTasks} */}
+
+          {/* {this.state.button} */}
+
           <div>
             <ul className="listItem">{dropDown}</ul>
           </div>
@@ -143,6 +153,7 @@ class Ready extends React.Component {
           // readyTasks={this.state.readyTasks}
           readyTasks={ready}
           deleteTask={this.deleteTask}
+          finished={this.props.finished}
         />
       </>
     );

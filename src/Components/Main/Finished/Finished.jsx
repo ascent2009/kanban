@@ -77,6 +77,7 @@ class Finished extends React.Component {
       listInit: true,
     });
     this.props.deleteTask(index);
+    this.props.finished(this.state.readyTasks.length + 1);
   }
 
   deleteTask = (value) => {

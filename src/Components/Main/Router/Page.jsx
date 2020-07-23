@@ -63,9 +63,9 @@ class Page extends React.Component {
   saveDB = () => localStorage.setItem("kanban", JSON.stringify(dataBase));
 
   saveDescription = () => {
-    console.log("save");
     const save = document.querySelector(".text");
     save.setAttribute("disabled", "disabled");
+    console.log("save", save);
     // save.classList.add("hide");
     // this.setState({ taskList: this.taskList });
 
@@ -96,10 +96,6 @@ class Page extends React.Component {
         <div className="mainStyle">
           <div className="titleStyle">
             <h2>{this.props.title}</h2>
-            <p>
-              {this.props.readyTasks.length}
-              {/* {this.props.active} */}
-            </p>
 
             <button
               className="closeButton"

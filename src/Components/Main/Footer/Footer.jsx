@@ -31,7 +31,7 @@ class Footer extends React.Component {
         <div className="footerTasksStatus">
           {/* <p>Active tasks: {this.activeTasksNumber}</p> */}
           <p>Active tasks: {this.props.activeTasks}</p>
-          <p>Finished tasks: {this.props.finishedTasks.length}</p>
+          <p>Finished tasks: {this.props.finishedTasks}</p>
         </div>
         <div className="copyright">
           Kanban board by {authorName}, {YEAR}
