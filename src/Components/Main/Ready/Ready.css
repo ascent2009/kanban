@@ -64,3 +64,11 @@
 .backlogBtn:disabled {
   background-color: rgb(208, 210, 216);
 }
+
+@media screen and (max-width: 1000px) {
+  .style {
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
