@@ -3,38 +3,22 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Inprogress.css";
 import Finished from "../Finished/Finished";
 import Button from "../../Button/button";
-
-// import Select from "../../Select/select";
+import Page from "../Router/Page";
 
 class Inprogress extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   value: "",
-    //   tasks: [],
-    // };
-
-    // this.data = this.props.tasks;
-
     this.state = {
       button: <Button onClick={this.createSelect.bind(this)} />,
       selectBox: null,
-      // buttonInit: false,
       listInit: false,
       backlogTasks: [],
-      // tasks: [],
-      // dropDownInit: this.props.listInit,
       readyTasks: [],
       taskArr: [],
+      dropDownInit: false,
+      title: "In Progress",
     };
   }
-
-  // createTask = () => {
-  //   this.state.tasks.unshift(<Select />);
-  //   this.setState({
-  //     tasks: this.state.tasks,
-  //   });
-  // };
 
   createSelect() {
     if (this.props.listInit === false) {
@@ -93,8 +77,6 @@ class Inprogress extends React.Component {
           {item}
         </div>
       );
-      // const taskList = this.state.tasks.map((item, index) => {
-      //   return <li key={index}>{item}</li>;
     });
 
     const ready = this.state.readyTasks.map((item, index) => {
@@ -105,25 +87,19 @@ class Inprogress extends React.Component {
       );
     });
 
-    return (
-      // <>
-      //   <div className="style">
-      //     <h2 className="title">Ready</h2>
-      //     <div>
-      //       {/* {this.state.tasks} */}
-      //       <ul className="listItem">{taskList}</ul>
-      //     </div>
-      //     <Button className="backlogBtn" onClick={this.createTask.bind(this)} />
-      //   </div>
-      // </>
+    const routePage = () => (
+      <Page title={this.state.title} readyTasks={this.state.readyTasks} />
+    );
 
-      <>
+    return (
+      <Router>
+        <Route path="/progress" component={routePage} />
         <div className="style">
-          <h2 className="readyTitle">In Progress</h2>
+          <Link to="/progress" className="routerLink">
+            <h2 className="readyTitle">{this.state.title}</h2>
+          </Link>
           {this.state.selectBox}
-          {/* {this.backlogTasks} */}
           {ready}
-          {/* {this.props.readyTasks} */}
           <div>
             <ul className="listItem">{dropDown}</ul>
           </div>
@@ -136,7 +112,7 @@ class Inprogress extends React.Component {
           deleteTask={this.deleteTask}
           finished={this.props.finished}
         />
-      </>
+      </Router>
     );
   }
 }

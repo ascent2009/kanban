@@ -1,19 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Backlog.css";
 import Button from "../../Button/button";
-// import Input from "../../Input/input";
-// import Ready from "../Ready/Ready";
 import Ready from "../Ready/Ready";
 import Page from "../Router/Page";
 
 class Backlog extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   value: "",
-    //   tasks: [],
-    // };
     this.state = {
       button: (
         <Button
@@ -24,28 +18,17 @@ class Backlog extends React.Component {
       input: null,
       inputValue: null,
       tasks: [],
-      // taskList: [],
       listInit: false,
       buttonInit: false,
 
       readyTasks: [],
-      // taskColumn: [],
       title: "Backlog",
-      // activeTasks: this.readyTasks.length,
       submitBtn: null,
     };
   }
 
-  // createTask = () => {
-  //   this.state.tasks.unshift(<Input />);
-  //   this.setState({
-  //     tasks: this.state.tasks,
-  //   });
-  // };
-
   addReadyTask(event) {
     const task = event.target.textContent;
-    // const task = event.target;
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
     });
@@ -53,13 +36,7 @@ class Backlog extends React.Component {
 
   createInput() {
     const input = (
-      <input
-        // autoComplete="off"
-        // autoFocus={true}
-        className="tasks"
-        onChange={this.addValue.bind(this)}
-        // onClick={this.addTask.bind(this)}
-      ></input>
+      <input className="tasks" onChange={this.addValue.bind(this)}></input>
     );
 
     const submitBtn = (
@@ -69,7 +46,6 @@ class Backlog extends React.Component {
     );
     this.setState({
       buttonInit: true,
-      // button: <Button onClick={this.addTask.bind(this)} />,
 
       input: input,
       listInit: false,
@@ -87,7 +63,6 @@ class Backlog extends React.Component {
   addTask() {
     if (this.state.inputValue === null) {
       return;
-      // return <Input className="taskEmpty" />;
     }
 
     this.setState({
@@ -106,12 +81,6 @@ class Backlog extends React.Component {
     this.state.tasks.splice(value, 1);
   };
 
-  // activeTasksFooter = () => {
-  //   this.setState({
-  //     activeTasks: this.tasks.readyTasks.length,
-  //   });
-  // };
-
   render() {
     const taskList = this.state.tasks.map((item, index) => {
       return (
@@ -124,18 +93,9 @@ class Backlog extends React.Component {
         </li>
       );
     });
-    // console.log("taskList: ", taskList.length);
-    // const readyTasks = this.state.readyTasks.map((item, index) => {
-    //   return <div key={index}>{item}</div>;
-    // });
 
     const routePage = () => (
-      <Page
-        title={this.state.title}
-        readyTasks={this.state.tasks}
-        // active={this.state.readyTasks}
-        // active={this.state.activeTasks}
-      />
+      <Page title={this.state.title} readyTasks={this.state.tasks} />
     );
 
     return (
@@ -143,45 +103,27 @@ class Backlog extends React.Component {
         <Router>
           <Route path="/backlog" component={routePage} />
           <div className="backlogStyle">
-            <h2
-              className="backlogTitle"
-              // onClick={() => {
-              //   this.props.active(this.state.tasks.length);
-              // }}
-            >
+            <h2 className="backlogTitle">
               <Link to="/backlog" className="routerLink">
                 {this.state.title}
               </Link>
             </h2>
 
-            {/* <Button
-            className="submitBtn"
-            onUpdate={() => this.props.updateData(taskList.length)}
-          /> */}
-
             <div>
-              {/* {this.state.tasks} */}
               <ul className="listItem">{taskList}</ul>
             </div>
-            {/* <Button className="backlogBtn" onClick={this.createTask.bind(this)} /> */}
+
             {this.state.input}
 
             <div className="backlogBtn">
               {this.state.button}
-              {/* <div
-                onClick={() => {
-                  this.props.active(this.state.tasks.length + 1);
-                }}
-              > */}
               {this.state.submitBtn}
-              {/* </div> */}
             </div>
           </div>
 
           <Ready
             tasks={taskList}
             buttonInit={this.state.buttonInit}
-            // listInit={this.state.listInit}
             listInit={this.state.inputValue}
             readyTasks={this.state.readyTasks}
             deleteTask={this.deleteTask}

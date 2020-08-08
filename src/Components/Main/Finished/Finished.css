@@ -24,6 +24,16 @@
 .backlogBtn {
     border: none;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 12px;
+}
+
+.clr {
+    margin-top: 12px;
+}
+
+.clr:hover {
+    background-color: red;
 }

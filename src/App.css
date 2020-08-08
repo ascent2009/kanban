@@ -76,6 +76,8 @@
   .header {
     justify-content: flex-end;
     background-color: #0079BF;
+    z-index: 2;
+
   }
 }
 
@@ -92,3 +94,4 @@
     transform: rotate(360deg);
   }
 } */
+

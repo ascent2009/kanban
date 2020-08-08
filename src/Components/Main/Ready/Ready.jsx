@@ -1,51 +1,30 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Ready.css";
-// import Inprogress from "../../InProgress/Inprogress";
 import Inprogress from "../InProgress/Inprogress";
 import Button from "../../Button/button";
-
-// import Select from "../../Select/select";
+import Page from "../Router/Page";
 
 class Ready extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   value: "",
-    //   tasks: [],
-    // };
-
-    // this.data = this.props.tasks;
 
     this.state = {
+      title: "Ready",
       button: <Button onClick={this.createSelect.bind(this)} />,
       selectBox: null,
-      // buttonInit: false,
-      // listInit: false,
+      listInit: false,
       backlogTasks: [],
-      // tasks: [],
       disabled: true,
       readyTasks: [],
       taskArr: [],
+      dropDownInit: false,
     };
   }
 
-  // createTask = () => {
-  //   this.state.tasks.unshift(<Select />);
-  //   this.setState({
-  //     tasks: this.state.tasks,
-  //   });
-  // };
-
   createSelect() {
-    if (
-      this.props.listInit === false
-      // || !this.state.readyTasks.length
-    ) {
+    if (this.props.listInit === false) {
       return;
-      // const disabled = document.querySelector(".button");
-      // disabled.setAttribute("disabled", "disabled");
-      // console.log("disabled: ", disabled);
     }
 
     const selectBox = (
@@ -53,10 +32,9 @@ class Ready extends React.Component {
     );
 
     this.setState({
-      // disableButton: "none",
       selectBox: selectBox,
-      thereAreTasks: true,
-      button: <Button onClick={this.createSelect.bind(this)} />,
+      // thereAreTasks: true,
+      // button: <Button onClick={this.createSelect.bind(this)} />,
     });
   }
 
@@ -83,11 +61,11 @@ class Ready extends React.Component {
       backlogTasks: [],
       selectBox: null,
       dropDownInit: false,
-      // listInit: true,
+      listInit: true,
     });
 
     this.props.deleteTask(index);
-    console.log("ready", this.state.readyTasks);
+
     this.props.minusActive(this.props.tasks.length - 1);
   }
 
@@ -97,8 +75,6 @@ class Ready extends React.Component {
     this.setState({
       taskArr: [...this.state.readyTasks, newArr],
     });
-
-    console.log("delete", this.state.readyTasks);
   };
 
   render() {
@@ -108,8 +84,6 @@ class Ready extends React.Component {
           {item}
         </div>
       );
-      // const taskList = this.state.tasks.map((item, index) => {
-      //   return <li key={index}>{item}</li>;
     });
 
     const ready = this.state.readyTasks.map((item, index) => {
@@ -120,27 +94,21 @@ class Ready extends React.Component {
       );
     });
 
+    const routePage = () => (
+      <Page title={this.state.title} readyTasks={this.state.readyTasks} />
+    );
+
     return (
-      // <>
-      //   <div className="style">
-      //     <h2 className="title">Ready</h2>
-      //     <div>
-      //       {/* {this.state.tasks} */}
-      //       <ul className="listItem">{taskList}</ul>
-      //     </div>
-      //     <Button className="backlogBtn" onClick={this.createTask.bind(this)} />
-      //   </div>
-      // </>
-
-      <>
+      <Router>
+        <Route path="/ready" component={routePage} />
         <div className="style">
-          <h2 className="readyTitle">Ready</h2>
+          <h2 className="readyTitle">
+            <Link to="/ready" className="routerLink">
+              {this.state.title}
+            </Link>
+          </h2>
           {this.state.selectBox}
-          {/* {this.backlogTasks} */}
           {ready}
-          {/* {this.props.readyTasks} */}
-
-          {/* {this.state.button} */}
 
           <div>
             <ul className="listItem">{dropDown}</ul>
@@ -151,12 +119,11 @@ class Ready extends React.Component {
 
         <Inprogress
           listInit={this.state.listInit}
-          // readyTasks={this.state.readyTasks}
           readyTasks={ready}
           deleteTask={this.deleteTask}
           finished={this.props.finished}
         />
-      </>
+      </Router>
     );
   }
 }

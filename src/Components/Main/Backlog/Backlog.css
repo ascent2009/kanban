@@ -47,6 +47,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  /* max-height: 200px; */
+  /* overflow: auto; */
 }
 
 .tasks {
@@ -56,7 +58,7 @@
   border-radius: 3%;
 
   width: 225px;
-  min-height: 25px;
+  /* min-height: 25px; */
   /* height: fit-content; */
   background-color: white;
   display: flex;
@@ -66,10 +68,6 @@
   overflow: inherit;
   white-space: normal;
 
-}
-
-.taskEmpty {
-  border: red 2px solid;
 }
 
 .backlogBtn {

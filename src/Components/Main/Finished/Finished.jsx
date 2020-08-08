@@ -1,20 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Finished.css";
 import Button from "../../Button/button";
-
-// import Select from "../../Select/select";
+import Page from "../Router/Page";
 
 class Finished extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   value: "",
-    //   tasks: [],
-    // };
-
-    // this.data = this.props.tasks;
-
     this.state = {
       button: (
         <Button
@@ -22,23 +14,15 @@ class Finished extends React.Component {
           onClick={this.createSelect.bind(this)}
         />
       ),
+      clearBtn: null,
+
       selectBox: null,
-      // buttonInit: false,
       listInit: false,
       backlogTasks: [],
-      // tasks: [],
-      // dropDownInit: this.props.listInit,
       readyTasks: [],
-      // taskArr: [],
+      title: "Finished",
     };
   }
-
-  // createTask = () => {
-  //   this.state.tasks.unshift(<Select />);
-  //   this.setState({
-  //     tasks: this.state.tasks,
-  //   });
-  // };
 
   createSelect() {
     if (this.props.listInit === false) {
@@ -69,12 +53,19 @@ class Finished extends React.Component {
     const task = event.target.textContent;
     const index = event.target.getAttribute("index");
 
+    const clearBtn = (
+      <button onClick={this.clearFinished.bind(this)} className="button + clr">
+        <p className="text">Clear All</p>
+      </button>
+    );
+
     this.setState({
       readyTasks: [...this.state.readyTasks, task],
       backlogTasks: [],
       selectBox: null,
       dropDownInit: false,
       listInit: true,
+      clearBtn: clearBtn,
     });
     this.props.deleteTask(index);
     this.props.finished(this.state.readyTasks.length + 1);
@@ -88,6 +79,14 @@ class Finished extends React.Component {
     });
   };
 
+  clearFinished = () => {
+    this.setState({
+      readyTasks: [],
+      clearBtn: null,
+    });
+    this.props.finished(0);
+  };
+
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
       return (
@@ -95,8 +94,6 @@ class Finished extends React.Component {
           {item}
         </div>
       );
-      // const taskList = this.state.tasks.map((item, index) => {
-      //   return <li key={index}>{item}</li>;
     });
 
     const ready = this.state.readyTasks.map((item, index) => {
@@ -107,34 +104,30 @@ class Finished extends React.Component {
       );
     });
 
-    return (
-      // <>
-      //   <div className="style">
-      //     <h2 className="title">Ready</h2>
-      //     <div>
-      //       {/* {this.state.tasks} */}
-      //       <ul className="listItem">{taskList}</ul>
-      //     </div>
-      //     <Button className="backlogBtn" onClick={this.createTask.bind(this)} />
-      //   </div>
-      // </>
+    const routePage = () => (
+      <Page title={this.state.title} readyTasks={this.state.readyTasks} />
+    );
 
-      <>
+    return (
+      <Router>
+        <Route path="/finished" component={routePage} />
         <div className="style">
-          <h2 className="readyTitle">Finished</h2>
+          <Link to="/finished" className="routerLink">
+            <h2 className="readyTitle"> {this.state.title}</h2>
+          </Link>
           {this.state.selectBox}
-          {/* {this.backlogTasks} */}
+
           {ready}
-          {/* {this.props.readyTasks} */}
+
           <div>
-            <ul className="listItem">{dropDown}</ul>
+            <ul className="listItem"> {dropDown}</ul>
           </div>
-          <div className="backlogBtn">{this.state.button}</div>
+          <div className="backlogBtn">
+            {this.state.button}
+            {this.state.clearBtn}
+          </div>
         </div>
-        {/* <div>
-          <Finished listInit={this.state.listInit} readyTasks={ready} />
-        </div> */}
-      </>
+      </Router>
     );
   }
 }
