@@ -88,6 +88,7 @@ class Backlog extends React.Component {
           onClick={this.addReadyTask.bind(this)}
           className="tasks"
           key={index}
+          index={index}
         >
           {item}
         </li>

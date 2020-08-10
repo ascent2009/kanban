@@ -18,6 +18,7 @@
     padding: 0;
     border-radius: 10px;
     width: 170px;
+    /* pointer-events: all; */
 }
 
 .button:hover,

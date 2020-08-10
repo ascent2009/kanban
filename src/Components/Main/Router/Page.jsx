@@ -26,7 +26,7 @@ class Page extends React.Component {
           placeholder="description..."
         ></textarea>
         <button className="btn" onClick={this.saveDescription.bind(this)}>
-          <img src={add} alt="add" title="добавить описание задачи" />
+          <img src={add} alt="add" title="добавить описание задачи и закрыть" />
         </button>
       </div>
     );

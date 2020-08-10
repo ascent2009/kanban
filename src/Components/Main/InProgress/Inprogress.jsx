@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Inprogress.css";
 import Finished from "../Finished/Finished";
 import Button from "../../Button/button";
@@ -73,7 +73,12 @@ class Inprogress extends React.Component {
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
       return (
-        <div onClick={this.selectTask.bind(this)} className="tasks" key={index}>
+        <div
+          onClick={this.selectTask.bind(this)}
+          className="tasksSelect"
+          key={index}
+          index={index}
+        >
           {item}
         </div>
       );
@@ -81,7 +86,7 @@ class Inprogress extends React.Component {
 
     const ready = this.state.readyTasks.map((item, index) => {
       return (
-        <div className="tasks" key={index}>
+        <div className="tasks" key={index} index={index}>
           {item}
         </div>
       );

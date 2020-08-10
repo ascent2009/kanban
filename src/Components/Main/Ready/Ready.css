@@ -62,6 +62,25 @@
   overflow: auto;
 }
 
+.tasksSelect {
+  margin: 0 12px 0 12px;
+  padding: 5px 0 5px 5px;
+  border: none;
+  border-radius: 3%;
+
+  width: 225px;
+  min-height: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  overflow: auto;
+}
+
+
+
 .dropDown {
   margin-left: 12px;
   width: 225px;
@@ -79,6 +98,7 @@
   display: flex;
   justify-content: center;
   margin: 12px;
+  pointer-events: all;
 }
 
 .backlogBtn:disabled {

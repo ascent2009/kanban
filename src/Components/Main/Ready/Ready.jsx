@@ -15,7 +15,8 @@ class Ready extends React.Component {
       selectBox: null,
       listInit: false,
       backlogTasks: [],
-      disabled: true,
+      disabled: "all",
+
       readyTasks: [],
       taskArr: [],
       dropDownInit: false,
@@ -23,7 +24,7 @@ class Ready extends React.Component {
   }
 
   createSelect() {
-    if (this.props.listInit === false) {
+    if (this.props.tasks.length === 0) {
       return;
     }
 
@@ -33,8 +34,7 @@ class Ready extends React.Component {
 
     this.setState({
       selectBox: selectBox,
-      // thereAreTasks: true,
-      // button: <Button onClick={this.createSelect.bind(this)} />,
+      disabled: "all",
     });
   }
 
@@ -80,7 +80,12 @@ class Ready extends React.Component {
   render() {
     const dropDown = this.state.backlogTasks.map((item, index) => {
       return (
-        <div onClick={this.selectTask.bind(this)} className="tasks" key={index}>
+        <div
+          onClick={this.selectTask.bind(this)}
+          className="tasksSelect"
+          key={index}
+          index={index}
+        >
           {item}
         </div>
       );
@@ -114,7 +119,12 @@ class Ready extends React.Component {
             <ul className="listItem">{dropDown}</ul>
           </div>
 
-          <div className="backlogBtn">{this.state.button}</div>
+          <div
+            className="backlogBtn"
+            style={{ pointerEvents: this.state.disabled }}
+          >
+            {this.state.button}
+          </div>
         </div>
 
         <Inprogress
