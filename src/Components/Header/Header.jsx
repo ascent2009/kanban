@@ -1,13 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import userMenuUp from "../Img/userMenuUp.jpg";
 import userMenuDown from "../Img/userMenuDown.jpg";
 import "./Header.css";
-
-// import styled, { keyframes } from 'styled-components';
-// import { fadeInDown } from 'react-animations';
-
-// const AnimMenu = styled.div`animation: 0.5s ${keyframes`${fadeInDown}`} 1`;
 
 class Header extends React.Component {
   constructor(props) {
