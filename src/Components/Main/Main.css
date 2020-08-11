@@ -1,0 +1,16 @@
+.tasksBoard {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 1000px) {
+  .tasksBoard {
+    flex-direction: column;
+  }
+}
