@@ -21,7 +21,6 @@ class Header extends React.Component {
 
   userMenu() {
     const dropDownMenu = (
-      // <AnimMenu>
       <div className="dropDownContayner">
         <div className="dropDownArrow"></div>
         <ul className="dropDownMenu">
@@ -41,7 +40,6 @@ class Header extends React.Component {
         </ul>
       </div>
     );
-    // </AnimMenu>
 
     if (this.state.click === false) {
       this.setState({
@@ -62,7 +60,6 @@ class Header extends React.Component {
     return (
       <div className="headerStyle">
         <div className="header">
-          {/* <h1><span className='headerTitle'>Awesome Kanban Board</span></h1> */}
           <div className="userMenu">
             <div onClick={this.userMenu.bind(this)}>{this.state.userMenu}</div>
             {this.state.dropDownMenu}

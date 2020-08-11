@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* margin: auto; */
   margin-bottom: 20px;
   overflow: auto;
 }
@@ -47,8 +46,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  /* max-height: 200px; */
-  /* overflow: auto; */
 }
 
 .tasks {
@@ -56,10 +53,7 @@
   padding: 5px;
   border: none;
   border-radius: 3%;
-
   width: 225px;
-  /* min-height: 25px; */
-  /* height: fit-content; */
   background-color: white;
   display: flex;
   justify-content: start;
@@ -67,7 +61,6 @@
   text-overflow: ellipsis;
   overflow: inherit;
   white-space: normal;
-
 }
 
 .backlogBtn {

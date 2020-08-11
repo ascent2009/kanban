@@ -1,13 +1,3 @@
-/* .backlogBtn {
-    border: none;
-
-    display: flex;
-    justify-content: space-between;
-
-    margin: 12px;
-
-} */
-
 .button {
     display: flex;
     justify-content: center;
@@ -37,8 +27,6 @@
     height: 15px;
     font-size: auto;
     margin: 0;
-    /* padding-left: 5px; */
-    /* line-height: 21px; */
 }
 
 .text {
@@ -46,7 +34,6 @@
     line-height: 21px;
     margin: 0;
     padding: 5px 10px 5px 5px;
-
 }
 
 .add:hover,
@@ -57,7 +44,6 @@
     transition: 0.5s;
     cursor: pointer;
     background-color: #ffffff;
-
 }
 
 .button:disabled {

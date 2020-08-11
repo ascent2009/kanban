@@ -19,8 +19,6 @@ class Backlog extends React.Component {
       inputValue: null,
       tasks: [],
       listInit: false,
-      buttonInit: false,
-
       readyTasks: [],
       title: "Backlog",
       submitBtn: null,
@@ -124,7 +122,6 @@ class Backlog extends React.Component {
 
           <Ready
             tasks={taskList}
-            buttonInit={this.state.buttonInit}
             listInit={this.state.inputValue}
             readyTasks={this.state.readyTasks}
             deleteTask={this.deleteTask}

@@ -10,7 +10,6 @@ class Page extends React.Component {
     super(props);
     this.state = {
       taskList: this.props.readyTasks,
-
       description: null,
     };
   }
@@ -39,11 +38,7 @@ class Page extends React.Component {
   saveDB = () => localStorage.setItem("kanban", JSON.stringify(dataBase));
 
   saveDescription = () => {
-    const save = document.querySelector(".text");
-    save.setAttribute("disabled", "disabled");
-    console.log("save", save);
     const itemObj = this.state.description;
-    console.log("this.state.description: ", itemObj);
     const newArr = dataBase.push(itemObj.textarea);
     this.saveDB(newArr);
 
@@ -81,6 +76,7 @@ class Page extends React.Component {
                   className="list"
                   onClick={this.showDescription.bind(this)}
                   key={index}
+                  index={index}
                 >
                   {item}
                 </li>

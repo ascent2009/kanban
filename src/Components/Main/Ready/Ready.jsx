@@ -15,8 +15,7 @@ class Ready extends React.Component {
       selectBox: null,
       listInit: false,
       backlogTasks: [],
-      disabled: "all",
-
+      disabled: null,
       readyTasks: [],
       taskArr: [],
       dropDownInit: false,
@@ -33,8 +32,8 @@ class Ready extends React.Component {
     );
 
     this.setState({
-      selectBox: selectBox,
       disabled: "all",
+      selectBox: selectBox,
     });
   }
 
@@ -44,6 +43,7 @@ class Ready extends React.Component {
     }
 
     this.setState({
+      disabled: "all",
       dropDownInit: true,
       backlogTasks: React.Children.toArray([
         ...this.state.backlogTasks,

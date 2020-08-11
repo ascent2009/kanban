@@ -12,6 +12,5 @@
 @media screen and (max-width: 1000px) {
   .tasksBoard {
     flex-direction: column;
-
   }
 }

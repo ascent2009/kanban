@@ -10,20 +10,10 @@ h1 {
     padding-top: 11px;
 }
 
-/* .image {
-    display: flex;
-    width: 54px;
-    justify-content: space-between;
-    margin-right: 20px;
-    align-items: center;
-} */
-
 .userMenu {
     margin-right: 20px;
     width: 64px;
-    /* height: 40px; */
     margin-top: 7px;
-
     z-index: 2;
     transition: 0.5s;
     cursor: pointer;
@@ -43,7 +33,6 @@ h1 {
     transition: 0.5s;
     opacity: 100;
     z-index: 1;
-    /* list-style-type: none; */
     transition: 0.5s;
     cursor: auto;
 }
@@ -55,10 +44,8 @@ h1 {
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    /* margin-left: 7px; */
     margin-top: -16px;
     transition: 0.5s;
-    /* z-index: 7; */
 }
 
 .dropDownArrow {
@@ -86,7 +73,6 @@ h1 {
 
 .menuItem:hover {
     color: black;
-    /* font-weight: bold; */
     background-color: rgb(175, 205, 223);
 }
 
