@@ -25,12 +25,12 @@ class Backlog extends React.Component {
     };
   }
 
-  addReadyTask(event) {
-    const task = event.target.textContent;
-    this.setState({
-      readyTasks: [...this.state.readyTasks, task],
-    });
-  }
+  // addReadyTask(event) {
+  //   const task = event.target.textContent;
+  //   this.setState({
+  //     readyTasks: [...this.state.readyTasks, task],
+  //   });
+  // }
 
   createInput() {
     const input = (
@@ -71,7 +71,7 @@ class Backlog extends React.Component {
       listInit: true,
       submitBtn: null,
     });
-
+    // console.log("readyTasks: ", this.state.tasks);
     this.props.active(this.state.tasks.length + 1);
   }
 
@@ -83,7 +83,7 @@ class Backlog extends React.Component {
     const taskList = this.state.tasks.map((item, index) => {
       return (
         <li
-          onClick={this.addReadyTask.bind(this)}
+          onClick={this.props.addReadyTask}
           className="tasks"
           key={index}
           index={index}
